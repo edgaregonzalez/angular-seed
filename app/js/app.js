@@ -23,7 +23,7 @@ angular.module('myApp', [
     }
   }])
   .config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/home',  {templateUrl: 'partials/home.html', controller: 'HomeCtrl'})
+    $routeProvider.when('/users',  {templateUrl: 'partials/user_index.html', controller: 'UserCtrl'})
     $routeProvider.when('/users/new', {templateUrl: 'partials/new_user.html', controller: 'NewUserCtrl'});
-    $routeProvider.otherwise({redirectTo: '/home'});
+    $routeProvider.otherwise({redirectTo: '/users'});
   }]);

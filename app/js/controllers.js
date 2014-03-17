@@ -17,4 +17,11 @@ angular.module('myApp.controllers', [])
       });
       $location.path('/home');
     }
+  }])
+  .controller('UserCtrl', ['$scope', '$location', 'syncData', function($scope, $location, syncData) {
+    $scope.users = syncData('users');
+
+    $scope.createNewUser = function () {
+      $location.path('/users/new');
+    };
   }]);
