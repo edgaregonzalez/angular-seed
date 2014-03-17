@@ -15,13 +15,33 @@ angular.module('myApp.controllers', [])
         email: $scope.user.email,
         password: $scope.user.password
       });
-      $location.path('/home');
+      $location.path('/users');
     }
+  }])
+  .controller('UserDetailCtrl', ['$scope', '$location', '$routeParams', 'syncData', function($scope, $location, $routeParams, syncData) {
+    $scope.user = syncData('users/' + $routeParams.id);
+    $scope.updateUser = function () {
+      $scope.user.$update({
+        firstName: $scope.user.firstName,
+        lastName: $scope.user.lastName,
+        email: $scope.user.email,
+        password: $scope.user.password
+      });
+
+      $location.path('/users');
+    }
+    $scope.cancel = function () {
+      $location.path('/users');
+    };
   }])
   .controller('UserCtrl', ['$scope', '$location', 'syncData', function($scope, $location, syncData) {
     $scope.users = syncData('users');
 
     $scope.createNewUser = function () {
       $location.path('/users/new');
+    };
+
+    $scope.editUser = function (id) {
+      $location.path('/users/' + id);
     };
   }]);
