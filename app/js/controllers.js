@@ -44,4 +44,9 @@ angular.module('myApp.controllers', [])
     $scope.editUser = function (id) {
       $location.path('/users/' + id);
     };
+
+    $scope.deleteUser = function(id) {
+      $scope.user = syncData('users/' + id);
+      $scope.user.$remove();
+    }
   }]);
